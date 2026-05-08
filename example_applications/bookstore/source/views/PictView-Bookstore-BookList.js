@@ -23,7 +23,7 @@ const _ViewConfiguration =
 			font-size: 1.4em;
 		}
 		.bookstore-list-header .bookstore-count {
-			color: #888;
+			color: var(--theme-color-text-muted, #888);
 			font-size: 0.9em;
 		}
 		.bookstore-table-wrap {
@@ -55,11 +55,11 @@ const _ViewConfiguration =
 			vertical-align: middle;
 		}
 		.bookstore-stock-yes {
-			color: #16a34a;
+			color: var(--theme-color-status-success, #16a34a);
 			font-weight: 600;
 		}
 		.bookstore-stock-no {
-			color: #dc2626;
+			color: var(--theme-color-status-error, #dc2626);
 			font-weight: 600;
 		}
 		.bookstore-actions {
@@ -75,30 +75,30 @@ const _ViewConfiguration =
 			transition: background-color 0.15s;
 		}
 		.bookstore-btn-details {
-			background: #2563eb;
-			color: #fff;
+			background: var(--theme-color-brand-primary, #2563eb);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.bookstore-btn-details:hover {
-			background: #1d4ed8;
+			background: var(--theme-color-brand-primary-hover, #1d4ed8);
 		}
 		.bookstore-btn-delete {
 			background: #fee2e2;
-			color: #dc2626;
+			color: var(--theme-color-status-error, #dc2626);
 		}
 		.bookstore-btn-delete:hover {
 			background: #fca5a5;
-			color: #991b1b;
+			color: var(--theme-color-status-error, #991b1b);
 		}
 		.bookstore-empty {
 			text-align: center;
 			padding: 3em 1em;
-			color: #888;
+			color: var(--theme-color-text-muted, #888);
 		}
 		.bookstore-empty h3 {
 			margin: 0 0 0.5em 0;
 			font-weight: 400;
 			font-size: 1.2em;
-			color: #666;
+			color: var(--theme-color-text-secondary, #666);
 		}
 		.bookstore-detail-table {
 			width: 100%;
@@ -106,11 +106,11 @@ const _ViewConfiguration =
 		}
 		.bookstore-detail-table td {
 			padding: 0.6em 0.8em;
-			border-bottom: 1px solid #eee;
+			border-bottom: 1px solid var(--theme-color-border-light, #eee);
 		}
 		.bookstore-detail-label {
 			font-weight: 600;
-			color: #555;
+			color: var(--theme-color-text-secondary, #555);
 			width: 110px;
 		}
 	`,

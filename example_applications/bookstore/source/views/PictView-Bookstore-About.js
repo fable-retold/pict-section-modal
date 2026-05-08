@@ -18,7 +18,7 @@ const _ViewConfiguration =
 		.bookstore-about-header {
 			text-align: center;
 			padding-bottom: 1.5em;
-			border-bottom: 1px solid #eee;
+			border-bottom: 1px solid var(--theme-color-border-light, #eee);
 			margin-bottom: 2em;
 		}
 		.bookstore-about-header h1 {
@@ -39,7 +39,7 @@ const _ViewConfiguration =
 			font-size: 1.2em;
 		}
 		.bookstore-about p {
-			color: #555;
+			color: var(--theme-color-text-secondary, #555);
 			line-height: 1.7;
 		}
 		.bookstore-about-features {
@@ -70,8 +70,8 @@ const _ViewConfiguration =
 			margin-top: 1em;
 		}
 		.bookstore-about-tech-item {
-			background: #fff;
-			border: 1px solid #e0e0e0;
+			background: var(--theme-color-background-panel, #fff);
+			border: 1px solid var(--theme-color-border-default, #e0e0e0);
 			border-radius: 4px;
 			padding: 1em;
 			text-align: center;
@@ -83,7 +83,7 @@ const _ViewConfiguration =
 		}
 		.bookstore-about-tech-item span {
 			font-size: 0.85em;
-			color: #666;
+			color: var(--theme-color-text-secondary, #666);
 		}
 	`,
 

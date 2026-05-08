@@ -32,7 +32,7 @@ const _ViewConfiguration =
 			cursor: pointer;
 		}
 		.bookstore-topbar-brand:hover {
-			color: #fff;
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.bookstore-topbar-center {
 			display: flex;
@@ -50,7 +50,7 @@ const _ViewConfiguration =
 		}
 		.bookstore-topbar-center a:hover {
 			background-color: #2a5082;
-			color: #fff;
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.bookstore-topbar-actions {
 			display: flex;
@@ -58,8 +58,8 @@ const _ViewConfiguration =
 		}
 		.bookstore-btn-clear-all {
 			background: transparent;
-			border: 1px solid #e74c3c;
-			color: #e74c3c;
+			border: 1px solid var(--theme-color-status-error, #e74c3c);
+			color: var(--theme-color-status-error, #e74c3c);
 			padding: 0.4em 0.9em;
 			border-radius: 4px;
 			font-size: 0.85em;
@@ -67,8 +67,8 @@ const _ViewConfiguration =
 			transition: background-color 0.15s, color 0.15s;
 		}
 		.bookstore-btn-clear-all:hover {
-			background: #e74c3c;
-			color: #fff;
+			background: var(--theme-color-status-error, #e74c3c);
+			color: var(--theme-color-background-panel, #fff);
 		}
 	`,
 

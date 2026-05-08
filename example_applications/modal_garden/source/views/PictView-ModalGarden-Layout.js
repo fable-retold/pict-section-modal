@@ -441,7 +441,7 @@ PictViewModalGardenLayout.default_configuration =
 		}
 		.garden-card
 		{
-			background: #ffffff;
+			background: var(--theme-color-background-panel, #ffffff);
 			border: 1px solid #e5e7eb;
 			border-radius: 12px;
 			padding: 28px 32px;
@@ -486,57 +486,57 @@ PictViewModalGardenLayout.default_configuration =
 		}
 		.garden-btn-primary
 		{
-			background: #2563eb;
-			color: #fff;
+			background: var(--theme-color-brand-primary, #2563eb);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-primary:hover
 		{
-			background: #1d4ed8;
+			background: var(--theme-color-brand-primary-hover, #1d4ed8);
 		}
 		.garden-btn-danger
 		{
-			background: #dc2626;
-			color: #fff;
+			background: var(--theme-color-status-error, #dc2626);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-danger:hover
 		{
-			background: #b91c1c;
+			background: var(--theme-color-status-error, #b91c1c);
 		}
 		.garden-btn-info
 		{
-			background: #2563eb;
-			color: #fff;
+			background: var(--theme-color-brand-primary, #2563eb);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-info:hover
 		{
-			background: #1d4ed8;
+			background: var(--theme-color-brand-primary-hover, #1d4ed8);
 		}
 		.garden-btn-success
 		{
-			background: #16a34a;
-			color: #fff;
+			background: var(--theme-color-status-success, #16a34a);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-success:hover
 		{
-			background: #15803d;
+			background: var(--theme-color-status-success, #15803d);
 		}
 		.garden-btn-warning
 		{
-			background: #d97706;
-			color: #fff;
+			background: var(--theme-color-status-warning, #d97706);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-warning:hover
 		{
-			background: #b45309;
+			background: var(--theme-color-status-warning, #b45309);
 		}
 		.garden-btn-error
 		{
-			background: #dc2626;
-			color: #fff;
+			background: var(--theme-color-status-error, #dc2626);
+			color: var(--theme-color-background-panel, #fff);
 		}
 		.garden-btn-error:hover
 		{
-			background: #b91c1c;
+			background: var(--theme-color-status-error, #b91c1c);
 		}
 		.garden-btn-secondary
 		{
@@ -550,8 +550,8 @@ PictViewModalGardenLayout.default_configuration =
 		.garden-btn-outline
 		{
 			background: transparent;
-			color: #2563eb;
-			border: 1px solid #2563eb;
+			color: var(--theme-color-brand-primary, #2563eb);
+			border: 1px solid var(--theme-color-brand-primary, #2563eb);
 		}
 		.garden-btn-outline:hover
 		{
@@ -575,7 +575,7 @@ PictViewModalGardenLayout.default_configuration =
 		.result-cancelled
 		{
 			background: #fef2f2;
-			color: #991b1b;
+			color: var(--theme-color-status-error, #991b1b);
 		}
 		.tooltip-target
 		{
@@ -624,7 +624,7 @@ PictViewModalGardenLayout.default_configuration =
 			align-items: center;
 			gap: 4px;
 			padding: 8px 12px;
-			background: #ffffff;
+			background: var(--theme-color-background-panel, #ffffff);
 			border: 1px solid #e5e7eb;
 			border-radius: 8px;
 		}

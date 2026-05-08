@@ -72,65 +72,72 @@ module.exports = (
 /* pict-section-modal */
 .pict-modal-root
 {
+	/* Defaults are routed through pict-provider-theme tokens so apps
+	   using the theme provider get themed modals automatically.  Each
+	   var() carries its original hex as the fallback so apps that don't
+	   install pict-provider-theme look exactly as before.  Apps may
+	   still override any --pict-modal-* var directly to layer over the
+	   theme-driven defaults. */
+
 	/* Overlay */
 	--pict-modal-overlay-bg: rgba(0, 0, 0, 0.5);
 
 	/* Dialog */
-	--pict-modal-bg: #ffffff;
-	--pict-modal-fg: #1a1a1a;
-	--pict-modal-border: #e0e0e0;
-	--pict-modal-border-radius: 8px;
-	--pict-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-	--pict-modal-header-bg: #f5f5f5;
-	--pict-modal-header-fg: #1a1a1a;
-	--pict-modal-header-border: #e0e0e0;
+	--pict-modal-bg:                  var(--theme-color-background-panel,  #ffffff);
+	--pict-modal-fg:                  var(--theme-color-text-primary,      #1a1a1a);
+	--pict-modal-border:              var(--theme-color-border-default,    #e0e0e0);
+	--pict-modal-border-radius:       8px;
+	--pict-modal-shadow:              0 4px 24px rgba(0, 0, 0, 0.15);
+	--pict-modal-header-bg:           var(--theme-color-background-secondary, #f5f5f5);
+	--pict-modal-header-fg:           var(--theme-color-text-primary,      #1a1a1a);
+	--pict-modal-header-border:       var(--theme-color-border-default,    #e0e0e0);
 
 	/* Buttons */
-	--pict-modal-btn-bg: #e0e0e0;
-	--pict-modal-btn-fg: #1a1a1a;
-	--pict-modal-btn-hover-bg: #d0d0d0;
-	--pict-modal-btn-primary-bg: #2563eb;
-	--pict-modal-btn-primary-fg: #ffffff;
-	--pict-modal-btn-primary-hover-bg: #1d4ed8;
-	--pict-modal-btn-danger-bg: #dc2626;
-	--pict-modal-btn-danger-fg: #ffffff;
-	--pict-modal-btn-danger-hover-bg: #b91c1c;
-	--pict-modal-btn-border-radius: 4px;
+	--pict-modal-btn-bg:              var(--theme-color-background-secondary, #e0e0e0);
+	--pict-modal-btn-fg:              var(--theme-color-text-primary,      #1a1a1a);
+	--pict-modal-btn-hover-bg:        var(--theme-color-background-hover,  #d0d0d0);
+	--pict-modal-btn-primary-bg:      var(--theme-color-brand-primary,     #2563eb);
+	--pict-modal-btn-primary-fg:      var(--theme-color-text-on-brand,     #ffffff);
+	--pict-modal-btn-primary-hover-bg:var(--theme-color-brand-primary-hover,#1d4ed8);
+	--pict-modal-btn-danger-bg:       var(--theme-color-status-error,      #dc2626);
+	--pict-modal-btn-danger-fg:       var(--theme-color-text-on-brand,     #ffffff);
+	--pict-modal-btn-danger-hover-bg: var(--theme-color-status-error,      #b91c1c);
+	--pict-modal-btn-border-radius:   4px;
 
 	/* Toast */
-	--pict-modal-toast-bg: #333333;
-	--pict-modal-toast-fg: #ffffff;
-	--pict-modal-toast-success-bg: #16a34a;
-	--pict-modal-toast-warning-bg: #d97706;
-	--pict-modal-toast-error-bg: #dc2626;
-	--pict-modal-toast-info-bg: #2563eb;
+	--pict-modal-toast-bg:            var(--theme-color-background-panel,  #333333);
+	--pict-modal-toast-fg:            var(--theme-color-text-primary,      #ffffff);
+	--pict-modal-toast-success-bg:    var(--theme-color-status-success,    #16a34a);
+	--pict-modal-toast-warning-bg:    var(--theme-color-status-warning,    #d97706);
+	--pict-modal-toast-error-bg:      var(--theme-color-status-error,      #dc2626);
+	--pict-modal-toast-info-bg:       var(--theme-color-status-info,       #2563eb);
 	--pict-modal-toast-border-radius: 6px;
-	--pict-modal-toast-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+	--pict-modal-toast-shadow:        0 2px 12px rgba(0, 0, 0, 0.15);
 
 	/* Tooltip */
-	--pict-modal-tooltip-bg: #1a1a1a;
-	--pict-modal-tooltip-fg: #ffffff;
-	--pict-modal-tooltip-border-radius: 4px;
-	--pict-modal-tooltip-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	--pict-modal-tooltip-bg:          var(--theme-color-background-tertiary,#1a1a1a);
+	--pict-modal-tooltip-fg:          var(--theme-color-text-primary,      #ffffff);
+	--pict-modal-tooltip-border-radius:4px;
+	--pict-modal-tooltip-shadow:      0 2px 8px rgba(0, 0, 0, 0.15);
 
 	/* Dropdown */
-	--pict-modal-dropdown-bg: #ffffff;
-	--pict-modal-dropdown-fg: #1a1a1a;
-	--pict-modal-dropdown-border: #e0e0e0;
-	--pict-modal-dropdown-border-radius: 6px;
-	--pict-modal-dropdown-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-	--pict-modal-dropdown-item-hover-bg: rgba(37, 99, 235, 0.10);
-	--pict-modal-dropdown-item-hover-fg: #1a1a1a;
-	--pict-modal-dropdown-item-disabled-fg: #9aa0a6;
-	--pict-modal-dropdown-separator: #e8e8e8;
-	--pict-modal-dropdown-header-fg: #6b7280;
-	--pict-modal-dropdown-danger-fg: #dc2626;
-	--pict-modal-dropdown-primary-fg: #2563eb;
+	--pict-modal-dropdown-bg:                 var(--theme-color-background-panel,  #ffffff);
+	--pict-modal-dropdown-fg:                 var(--theme-color-text-primary,      #1a1a1a);
+	--pict-modal-dropdown-border:             var(--theme-color-border-default,    #e0e0e0);
+	--pict-modal-dropdown-border-radius:      6px;
+	--pict-modal-dropdown-shadow:             0 6px 18px rgba(0, 0, 0, 0.18);
+	--pict-modal-dropdown-item-hover-bg:      var(--theme-color-background-hover,  rgba(37, 99, 235, 0.10));
+	--pict-modal-dropdown-item-hover-fg:      var(--theme-color-text-primary,      #1a1a1a);
+	--pict-modal-dropdown-item-disabled-fg:   var(--theme-color-text-muted,        #9aa0a6);
+	--pict-modal-dropdown-separator:          var(--theme-color-border-light,      #e8e8e8);
+	--pict-modal-dropdown-header-fg:          var(--theme-color-text-secondary,    #6b7280);
+	--pict-modal-dropdown-danger-fg:          var(--theme-color-status-error,      #dc2626);
+	--pict-modal-dropdown-primary-fg:         var(--theme-color-brand-primary,     #2563eb);
 
 	/* Typography */
-	--pict-modal-font-family: system-ui, -apple-system, sans-serif;
-	--pict-modal-font-size: 14px;
-	--pict-modal-title-font-size: 16px;
+	--pict-modal-font-family:         var(--theme-typography-family-sans,  system-ui, -apple-system, sans-serif);
+	--pict-modal-font-size:           14px;
+	--pict-modal-title-font-size:     16px;
 
 	/* Animation */
 	--pict-modal-transition-duration: 200ms;

@@ -104,7 +104,7 @@ class BookstoreApplication extends libPictApplication
 			return;
 		}
 
-		let tmpStockLabel = tmpBook.InStock ? '<span style="color:#16a34a;font-weight:600;">In Stock</span>' : '<span style="color:#dc2626;font-weight:600;">Out of Stock</span>';
+		let tmpStockLabel = tmpBook.InStock ? '<span style="color:var(--theme-color-status-success, #16a34a);font-weight:600;">In Stock</span>' : '<span style="color:var(--theme-color-status-error, #dc2626);font-weight:600;">Out of Stock</span>';
 
 		let tmpContent = '<table class="bookstore-detail-table">'
 			+ '<tr><td class="bookstore-detail-label">Title</td><td>' + tmpBook.Title + '</td></tr>'
