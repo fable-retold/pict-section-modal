@@ -847,6 +847,14 @@ module.exports = (
 /* Panels — base */
 .pict-modal-shell-panel
 {
+	/* How far the collapse-tab's panel-bg "merge bar" extends INTO
+	   the panel past the tab's geometric edge. Painted via box-shadow
+	   on the tab (no DOM impact), it masks any 1px theme border on an
+	   inner element, content padding offset, or resize-handle hover
+	   bleed in the strip between the tab's panel-facing edge and the
+	   first real pixel of panel content. Consumers can bump this for
+	   themes with thicker (2+px) inner borders. */
+	--pict-modal-collapse-tab-merge: 2px;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -952,37 +960,63 @@ module.exports = (
 	border-color: var(--brand-color-primary-mode, var(--theme-color-brand-primary, #2563eb));
 }
 /* Drop shadow casts AWAY from the panel so the tab feels pulled out
-   (extension of the panel) rather than floating across the boundary. */
+   (extension of the panel) rather than floating across the boundary.
+   The first shadow value is the merge-bar (panel-bg colored, offset
+   INTO the panel) which has to be repeated here so the hover override
+   doesn't drop it. */
 .pict-modal-shell-panel-left:hover    > .pict-modal-shell-panel-collapse-tab,
-.pict-modal-shell-panel-left    > .pict-modal-shell-panel-collapse-tab:hover    { box-shadow:  3px 0 6px -2px rgba(0, 0, 0, 0.18); }
+.pict-modal-shell-panel-left    > .pict-modal-shell-panel-collapse-tab:hover
+{
+	box-shadow:
+		calc(-1 * var(--pict-modal-collapse-tab-merge)) 0 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff)),
+		3px 0 6px -2px rgba(0, 0, 0, 0.18);
+}
 .pict-modal-shell-panel-right:hover   > .pict-modal-shell-panel-collapse-tab,
-.pict-modal-shell-panel-right   > .pict-modal-shell-panel-collapse-tab:hover   { box-shadow: -3px 0 6px -2px rgba(0, 0, 0, 0.18); }
+.pict-modal-shell-panel-right   > .pict-modal-shell-panel-collapse-tab:hover
+{
+	box-shadow:
+		var(--pict-modal-collapse-tab-merge) 0 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff)),
+		-3px 0 6px -2px rgba(0, 0, 0, 0.18);
+}
 .pict-modal-shell-panel-top:hover     > .pict-modal-shell-panel-collapse-tab,
-.pict-modal-shell-panel-top     > .pict-modal-shell-panel-collapse-tab:hover     { box-shadow:  0 3px 6px -2px rgba(0, 0, 0, 0.18); }
+.pict-modal-shell-panel-top     > .pict-modal-shell-panel-collapse-tab:hover
+{
+	box-shadow:
+		0 calc(-1 * var(--pict-modal-collapse-tab-merge)) 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff)),
+		0 3px 6px -2px rgba(0, 0, 0, 0.18);
+}
 .pict-modal-shell-panel-bottom:hover  > .pict-modal-shell-panel-collapse-tab,
-.pict-modal-shell-panel-bottom  > .pict-modal-shell-panel-collapse-tab:hover  { box-shadow:  0 -3px 6px -2px rgba(0, 0, 0, 0.18); }
+.pict-modal-shell-panel-bottom  > .pict-modal-shell-panel-collapse-tab:hover
+{
+	box-shadow:
+		0 var(--pict-modal-collapse-tab-merge) 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff)),
+		0 -3px 6px -2px rgba(0, 0, 0, 0.18);
+}
 
 /* Side panels: slim VERTICAL sliver pulled OUT of the panel's outer
-   boundary like a drawer tab. The inner edge is anchored AT the panel
-   boundary (with a 1px overlap so the tab visually merges with the
-   panel's own background — no hairline gap). The tab grows OUTWARD
-   only on hover; the inner edge stays put so the tab always looks
-   like an extension of the panel rather than a floating button.
-   Border-left is removed for left panels (and border-right for right
-   panels) so the panel-facing edge is open. */
+   boundary like a drawer tab. The geometric inner edge sits 1px
+   INSIDE the panel boundary, and the merge-bar box-shadow paints
+   another --pict-modal-collapse-tab-merge px of panel-bg color past
+   it INTO the panel — together they mask any 1px theme border on an
+   inner element, content padding offset, or resize-handle hover bleed
+   that would otherwise leak between the tab and the panel content.
+   The tab grows OUTWARD only on hover; the inner edge stays put so
+   the tab always looks like an extension of the panel rather than a
+   floating button. Border-left is removed for left panels (and
+   border-right for right panels) so the panel-facing edge is open. */
 .pict-modal-shell-panel-left  > .pict-modal-shell-panel-collapse-tab
 {
-	/* width 6, right: -5px → tab spans (panelRight - 1) to (panelRight + 5).
-	   The 1px overlap into the panel is what makes it look attached. */
 	right: -5px; top: 14px; width: 6px; height: 28px;
 	border-radius: 0 4px 4px 0;
 	border-left: 0;
+	box-shadow: calc(-1 * var(--pict-modal-collapse-tab-merge)) 0 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff));
 }
 .pict-modal-shell-panel-right > .pict-modal-shell-panel-collapse-tab
 {
 	left:  -5px; top: 14px; width: 6px; height: 28px;
 	border-radius: 4px 0 0 4px;
 	border-right: 0;
+	box-shadow: var(--pict-modal-collapse-tab-merge) 0 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff));
 }
 /* Hover: same inner anchor (panelRight - 1), tab grows outward to
    width 18 → right: -17px. Top + height grow downward only (top
@@ -1000,19 +1034,22 @@ module.exports = (
 }
 
 /* Top / bottom panels: slim HORIZONTAL sliver pulled OUT of the
-   horizontal boundary, anchored 14 px in from the right.  Same
-   inner-edge-anchored / 1 px overlap pattern as the side panels. */
+   horizontal boundary, anchored 14 px in from the right. Same
+   inner-edge-anchored + merge-bar pattern as the side panels — the
+   merge-bar offsets vertically instead of horizontally. */
 .pict-modal-shell-panel-top    > .pict-modal-shell-panel-collapse-tab
 {
 	bottom: -5px; right: 14px; width: 28px; height: 6px;
 	border-radius: 0 0 4px 4px;
 	border-top: 0;
+	box-shadow: 0 calc(-1 * var(--pict-modal-collapse-tab-merge)) 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff));
 }
 .pict-modal-shell-panel-bottom > .pict-modal-shell-panel-collapse-tab
 {
 	top:    -5px; right: 14px; width: 28px; height: 6px;
 	border-radius: 4px 4px 0 0;
 	border-bottom: 0;
+	box-shadow: 0 var(--pict-modal-collapse-tab-merge) 0 0 var(--pict-modal-bg, var(--theme-color-background-panel, #ffffff));
 }
 .pict-modal-shell-panel-top:hover    > .pict-modal-shell-panel-collapse-tab,
 .pict-modal-shell-panel-top    > .pict-modal-shell-panel-collapse-tab:hover
