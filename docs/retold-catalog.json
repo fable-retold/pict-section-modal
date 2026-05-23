@@ -1,5 +1,5 @@
 {
-	"Generated": "2026-05-22T05:45:41.299Z",
+	"Generated": "2026-05-23T01:48:36.292Z",
 	"Mode": "module",
 	"GitHubOrg": "stevenvelozo",
 	"DefaultBranch": "master",
@@ -92,22 +92,6 @@
 					{
 						"Title": "dismissAll",
 						"Path": "api/dismissAll.md"
-					},
-					{
-						"Title": "dismissModals",
-						"Path": "api/dismissModals.md"
-					},
-					{
-						"Title": "dismissTooltips",
-						"Path": "api/dismissTooltips.md"
-					},
-					{
-						"Title": "dismissToasts",
-						"Path": "api/dismissToasts.md"
-					},
-					{
-						"Title": "destroy",
-						"Path": "api/destroy.md"
 					}
 				]
 			},
@@ -115,8 +99,25 @@
 				"Title": "API -- Theming",
 				"Children": [
 					{
-						"Title": "CSS Custom Properties",
-						"Path": "api/CSS_Custom_Properties.md"
+						"Title": "Theming",
+						"Path": "api/theming.md"
+					}
+				]
+			},
+			{
+				"Title": "Examples",
+				"Children": [
+					{
+						"Title": "Acme Widgets",
+						"Path": "examples/acme/README.md"
+					},
+					{
+						"Title": "Bookstore",
+						"Path": "examples/bookstore/README.md"
+					},
+					{
+						"Title": "Modal Garden",
+						"Path": "examples/modal_garden/README.md"
 					}
 				]
 			}
@@ -140,6 +141,16 @@
 			"api/theming.md",
 			"api/toast.md",
 			"api/tooltip.md",
+			"examples/README.md",
+			"examples/acme/README.md",
+			"examples/acme/index.html",
+			"examples/acme/pict-section-modal-example-acme.compatible.min.js",
+			"examples/bookstore/README.md",
+			"examples/bookstore/index.html",
+			"examples/bookstore/pict-section-modal-example-bookstore.compatible.min.js",
+			"examples/modal_garden/README.md",
+			"examples/modal_garden/index.html",
+			"examples/modal_garden/pict-section-modal-example-modal-garden.compatible.min.js",
 			"index.html",
 			"retold-catalog.json",
 			"retold-keyword-index.json"

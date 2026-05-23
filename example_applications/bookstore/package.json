@@ -24,8 +24,25 @@
 		"whenFileExists": "overwrite"
 	},
 	"copyFiles": [
-		{ "from": "./html/*", "to": "./dist/" },
-		{ "from": "./css/**", "to": "./dist/css/" },
-		{ "from": "./node_modules/pict/dist/*", "to": "./dist/js/" }
-	]
+		{
+			"from": "./html/*",
+			"to": "./dist/"
+		},
+		{
+			"from": "./css/**",
+			"to": "./dist/css/"
+		},
+		{
+			"from": "./node_modules/pict/dist/*",
+			"to": "./dist/js/"
+		}
+	],
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "Bookstore",
+			"Summary": "Practical modal usage in a data-driven inventory app — confirm on delete, double-confirm on bulk delete, custom modals for record details, toasts for feedback.",
+			"Complexity": "Intermediate"
+		}
+	}
 }

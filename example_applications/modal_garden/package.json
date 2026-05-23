@@ -24,8 +24,25 @@
 		"whenFileExists": "overwrite"
 	},
 	"copyFiles": [
-		{ "from": "./html/*", "to": "./dist/" },
-		{ "from": "./css/**", "to": "./dist/css/" },
-		{ "from": "./node_modules/pict/dist/*", "to": "./dist/js/" }
-	]
+		{
+			"from": "./html/*",
+			"to": "./dist/"
+		},
+		{
+			"from": "./css/**",
+			"to": "./dist/css/"
+		},
+		{
+			"from": "./node_modules/pict/dist/*",
+			"to": "./dist/js/"
+		}
+	],
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "Modal Garden",
+			"Summary": "Interactive feature catalog covering every pict-section-modal primitive: confirm, doubleConfirm, show, toast, tooltip, dropdown, plus the full shell + panels playground.",
+			"Complexity": "Intermediate"
+		}
+	}
 }

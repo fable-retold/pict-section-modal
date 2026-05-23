@@ -25,8 +25,25 @@
 		"whenFileExists": "overwrite"
 	},
 	"copyFiles": [
-		{ "from": "./html/*",            "to": "./dist/" },
-		{ "from": "./css/**",            "to": "./dist/css/" },
-		{ "from": "./node_modules/pict/dist/*", "to": "./dist/js/" }
-	]
+		{
+			"from": "./html/*",
+			"to": "./dist/"
+		},
+		{
+			"from": "./css/**",
+			"to": "./dist/css/"
+		},
+		{
+			"from": "./node_modules/pict/dist/*",
+			"to": "./dist/js/"
+		}
+	],
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "Acme Widgets",
+			"Summary": "A branded multi-page app demonstrating the full shell + theme integration — custom brand, custom theme, responsive sidebar, gear menu, and bottom status bar.",
+			"Complexity": "Advanced"
+		}
+	}
 }

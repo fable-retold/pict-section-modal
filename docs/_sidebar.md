@@ -32,11 +32,13 @@
 - API -- Cleanup
 
   - [dismissAll](api/dismissAll.md)
-  - [dismissModals](api/dismissModals.md)
-  - [dismissTooltips](api/dismissTooltips.md)
-  - [dismissToasts](api/dismissToasts.md)
-  - [destroy](api/destroy.md)
 
 - API -- Theming
 
-  - [CSS Custom Properties](api/CSS_Custom_Properties.md)
+  - [Theming](api/theming.md)
+
+- Examples
+
+  - [Acme Widgets](examples/acme/README.md)
+  - [Bookstore](examples/bookstore/README.md)
+  - [Modal Garden](examples/modal_garden/README.md)

@@ -872,6 +872,18 @@ module.exports = (
 	min-height: 0;
 	overflow: auto;
 }
+/* Fixed-mode panels are pure chrome (topbars, status rows). Their
+   content should fit the configured Size exactly — never scroll. The
+   1px border that .pict-modal-shell-panel-mode-fixed adds on the
+   inner edge shaves 1px off the content's available height, which
+   then triggers a sliver-scrollbar on any inner widget with
+   min-height matching the panel Size. overflow:hidden here suppresses
+   that without affecting resizable/collapsible panels (sidebars,
+   drawers) where scrollable content is the whole point. */
+.pict-modal-shell-panel-mode-fixed > .pict-modal-shell-panel-content
+{
+	overflow: hidden;
+}
 .pict-modal-shell-panel-content-inner
 {
 	min-height: 100%;
