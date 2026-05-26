@@ -13,14 +13,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/stevenvelozo/pict-section-modal.git"
+		"url": "git+https://github.com/fable-retold/pict-section-modal.git"
 	},
 	"author": "steven velozo <steven@velozo.com>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/stevenvelozo/pict-section-modal/issues"
+		"url": "https://github.com/fable-retold/pict-section-modal/issues"
 	},
-	"homepage": "https://github.com/stevenvelozo/pict-section-modal#readme",
+	"homepage": "https://github.com/fable-retold/pict-section-modal#readme",
 	"devDependencies": {
 		"browser-env": "^3.3.0",
 		"pict": "^1.0.372",

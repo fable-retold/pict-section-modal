@@ -8,7 +8,7 @@
 - Simple and rich interactive tooltips
 - Full CSS custom properties theming
 
-[GitHub](https://github.com/stevenvelozo/pict-section-modal)
+[GitHub](https://github.com/fable-retold/pict-section-modal)
 [Get Started](#pict-section-modal)
 
 <!-- docuserve:examples:start -->

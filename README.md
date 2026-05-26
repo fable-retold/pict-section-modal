@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/pict-section-modal.svg)](https://www.npmjs.com/package/pict-section-modal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modal dialog, confirmation, tooltip, toast notification, and **responsive layout shell** section view for the [Pict](https://github.com/stevenvelozo/pict) application framework. Drop in a single view to get promise-based confirmations, custom floating windows, auto-dismissing toasts, hover tooltips, and a panel-based application shell with built-in responsive behaviour -- all styled through CSS custom properties.
+A modal dialog, confirmation, tooltip, toast notification, and **responsive layout shell** section view for the [Pict](https://github.com/fable-retold/pict) application framework. Drop in a single view to get promise-based confirmations, custom floating windows, auto-dismissing toasts, hover tooltips, and a panel-based application shell with built-in responsive behaviour -- all styled through CSS custom properties.
 
 Pict-Section-Modal provides a complete notification and dialog toolkit -- confirm dialogs, double-confirm safety gates, custom modal windows with arbitrary content, toast notifications with stacking, simple or rich interactive tooltips, plus a viewport-filling layout shell with resizable side panels that fold into top drawers at narrow widths -- all composable through the Fable service provider pattern.
 
@@ -377,11 +377,11 @@ Override any `--pict-modal-*` custom property on `.pict-modal-root` to customize
 
 ## Documentation
 
-Full documentation is available at [https://stevenvelozo.github.io/pict-section-modal/](https://stevenvelozo.github.io/pict-section-modal/)
+Full documentation is available at [https://fable-retold.github.io/pict-section-modal/](https://fable-retold.github.io/pict-section-modal/)
 
-- [Getting Started](https://stevenvelozo.github.io/pict-section-modal/#/Quick_Start) -- First modal dialog in five minutes
-- [Architecture](https://stevenvelozo.github.io/pict-section-modal/#/Architecture) -- Helper class design and overlay management
-- [Implementation Reference](https://stevenvelozo.github.io/pict-section-modal/#/Implementation_Reference) -- Complete API surface
+- [Getting Started](https://fable-retold.github.io/pict-section-modal/#/Quick_Start) -- First modal dialog in five minutes
+- [Architecture](https://fable-retold.github.io/pict-section-modal/#/Architecture) -- Helper class design and overlay management
+- [Implementation Reference](https://fable-retold.github.io/pict-section-modal/#/Implementation_Reference) -- Complete API surface
 
 ## API Reference (Function Docs)
 
@@ -403,10 +403,10 @@ Detailed per-function documentation with code snippets:
 
 ## Related Packages
 
-- [pict](https://github.com/stevenvelozo/pict) -- MVC application framework
-- [pict-view](https://github.com/stevenvelozo/pict-view) -- View base class
-- [pict-section-form](https://github.com/stevenvelozo/pict-section-form) -- Form sections
-- [fable](https://github.com/stevenvelozo/fable) -- Service infrastructure and dependency injection
+- [pict](https://github.com/fable-retold/pict) -- MVC application framework
+- [pict-view](https://github.com/fable-retold/pict-view) -- View base class
+- [pict-section-form](https://github.com/fable-retold/pict-section-form) -- Form sections
+- [fable](https://github.com/fable-retold/fable) -- Service infrastructure and dependency injection
 
 ## License
 
