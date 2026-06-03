@@ -14,8 +14,8 @@
 		"pict": "^1.0.367",
 		"pict-application": "^1.0.34",
 		"pict-router": "^1.0.10",
-		"pict-section-modal": "file:../../",
-		"pict-section-theme": "file:../../../pict-section-theme",
+		"pict-section-modal": "^1.1.4",
+		"pict-section-theme": "^1.1.1",
 		"pict-view": "^1.0.68"
 	},
 	"devDependencies": {

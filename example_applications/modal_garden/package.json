@@ -15,7 +15,7 @@
 		"pict-application": "^1.0.28",
 		"pict-view": "^1.0.67",
 		"pict-section-code": "^1.0.4",
-		"pict-section-modal": "file:../../"
+		"pict-section-modal": "^1.1.4"
 	},
 	"devDependencies": {
 		"quackage": "^1.0.59"
