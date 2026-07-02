@@ -45,12 +45,18 @@ class PictModalDropdown
 	 *   a rect-like { left, top, width, height } anchor (handy for context menus).
 	 * @param {object} pOptions
 	 * @param {Array}    pOptions.items     - [{ Hash, Label, Style?, Disabled?, Tooltip?, Icon?, Separator? }]
-	 * @param {string}   [pOptions.align]   - 'left'|'right' (default 'left')
+	 * @param {string}   [pOptions.ContentHTML] - Free-form HTML body for the popover, rendered
+	 *   verbatim via innerHTML INSTEAD of building a menu from items[]. When set, the element is
+	 *   a plain anchored popover (no role=menu / keyboard item nav); outside-click, Escape,
+	 *   auto-flip and reposition still apply. Sanitize untrusted content. items is ignored.
+	 * @param {string}   [pOptions.align]   - 'left'|'right'|'center' (default 'left')
 	 * @param {string}   [pOptions.position]- 'auto'|'below'|'above' (default 'auto')
 	 * @param {string}   [pOptions.minWidth]- CSS minWidth (default: anchor width if known, else '160px')
+	 * @param {string}   [pOptions.maxWidth]- CSS maxWidth (default unset; the base menu caps at 360px,
+	 *   the --content variant uncaps — set this for wide rich-content popovers)
 	 * @param {string}   [pOptions.maxHeight]- CSS maxHeight (default '60vh')
 	 * @param {string}   [pOptions.className]- extra class(es) for the menu element
-	 * @param {boolean}  [pOptions.closeOnSelect] - default true
+	 * @param {boolean}  [pOptions.closeOnSelect] - default true (no-op in ContentHTML mode)
 	 * @param {function} [pOptions.onSelect]- called with (Hash, Item) on selection
 	 * @param {function} [pOptions.onClose] - called after dismiss
 	 * @returns {Promise<{Hash: string, Item: object}|null>}
@@ -235,10 +241,26 @@ class PictModalDropdown
 		let tmpId = this._modal._nextId();
 		let tmpMenu = document.createElement('div');
 		tmpMenu.className = 'pict-modal-dropdown';
+		// Free-form content popovers carry a modifier so the host can reset the
+		// menu-item chrome (padding / max-width) and style the body itself.
+		if (typeof pOptions.ContentHTML === 'string') { tmpMenu.className += ' pict-modal-dropdown--content'; }
 		if (pOptions.className) { tmpMenu.className += ' ' + pOptions.className; }
 		tmpMenu.id = 'pict-modal-dropdown-' + tmpId;
-		tmpMenu.setAttribute('role', 'menu');
 		tmpMenu.style.maxHeight = pOptions.maxHeight;
+		if (pOptions.maxWidth) { tmpMenu.style.maxWidth = pOptions.maxWidth; }
+
+		// ContentHTML mode: render the caller's HTML verbatim instead of building
+		// a menu from items[]. This is a free-form anchored popover (e.g. a rich
+		// info card, or a pre-rendered template menu) — not a role=menu list, so
+		// we skip the menu role and the per-item keyboard semantics. Outside-click
+		// / Escape / auto-flip / reposition all still apply from dropdown().
+		if (typeof pOptions.ContentHTML === 'string')
+		{
+			tmpMenu.innerHTML = pOptions.ContentHTML;
+			return tmpMenu;
+		}
+
+		tmpMenu.setAttribute('role', 'menu');
 
 		let tmpHtml = '';
 		for (let i = 0; i < pItems.length; i++)

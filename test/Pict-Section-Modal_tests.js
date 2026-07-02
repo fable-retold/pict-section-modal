@@ -16,7 +16,7 @@ const libPictSectionModal = require('../source/Pict-Section-Modal.js');
 
 function cleanupDOM()
 {
-	let tmpSelectors = ['.pict-modal-overlay', '.pict-modal-dialog', '.pict-modal-toast-container', '.pict-modal-toast', '.pict-modal-tooltip'];
+	let tmpSelectors = ['.pict-modal-overlay', '.pict-modal-dialog', '.pict-modal-toast-container', '.pict-modal-toast', '.pict-modal-tooltip', '.pict-modal-dropdown'];
 	for (let i = 0; i < tmpSelectors.length; i++)
 	{
 		let tmpElements = document.querySelectorAll(tmpSelectors[i]);
@@ -1265,6 +1265,131 @@ suite
 						tmpHandle.toggle();
 						tmpHandle.destroy();
 						fDone();
+					}
+				);
+			}
+		);
+
+		suite
+		(
+			'Dropdown - ContentHTML',
+			() =>
+			{
+				test
+				(
+					'dropdown() with ContentHTML renders the HTML verbatim',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						tmpModal.dropdown(tmpAnchor, { ContentHTML: '<div class="card-body">Hello Popover</div>' });
+
+						let tmpMenu = document.querySelector('.pict-modal-dropdown');
+						Expect(tmpMenu).to.not.equal(null);
+						Expect(tmpMenu.innerHTML).to.contain('Hello Popover');
+						Expect(tmpMenu.querySelector('.card-body')).to.not.equal(null);
+
+						tmpModal.dismissDropdowns();
+						document.body.removeChild(tmpAnchor);
+						fDone();
+					}
+				);
+				test
+				(
+					'dropdown() with ContentHTML is a free-form popover (content modifier, no menu role)',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						tmpModal.dropdown(tmpAnchor, { ContentHTML: '<p>Card</p>', maxWidth: '800px' });
+
+						let tmpMenu = document.querySelector('.pict-modal-dropdown');
+						Expect(tmpMenu.classList.contains('pict-modal-dropdown--content')).to.equal(true);
+						Expect(tmpMenu.getAttribute('role')).to.equal(null);
+						Expect(tmpMenu.style.maxWidth).to.equal('800px');
+
+						tmpModal.dismissDropdowns();
+						document.body.removeChild(tmpAnchor);
+						fDone();
+					}
+				);
+				test
+				(
+					'dropdown() ContentHTML ignores items and builds no menu items',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						tmpModal.dropdown(tmpAnchor,
+							{
+								ContentHTML: '<span>Body</span>',
+								items: [ { Hash: 'edit', Label: 'Edit' } ],
+							});
+
+						let tmpMenu = document.querySelector('.pict-modal-dropdown');
+						Expect(tmpMenu.querySelectorAll('[data-pict-modal-dropdown-item]').length).to.equal(0);
+
+						tmpModal.dismissDropdowns();
+						document.body.removeChild(tmpAnchor);
+						fDone();
+					}
+				);
+				test
+				(
+					'dropdown() items mode still renders a role=menu list (regression guard)',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						tmpModal.dropdown(tmpAnchor, { items: [ { Hash: 'edit', Label: 'Edit' } ] });
+
+						let tmpMenu = document.querySelector('.pict-modal-dropdown');
+						Expect(tmpMenu.getAttribute('role')).to.equal('menu');
+						Expect(tmpMenu.classList.contains('pict-modal-dropdown--content')).to.equal(false);
+						Expect(tmpMenu.querySelectorAll('[data-pict-modal-dropdown-item]').length).to.equal(1);
+
+						tmpModal.dismissDropdowns();
+						document.body.removeChild(tmpAnchor);
+						fDone();
+					}
+				);
+				test
+				(
+					'dropdown() with ContentHTML resolves null on dismiss',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						let tmpResult = tmpModal.dropdown(tmpAnchor, { ContentHTML: '<p>X</p>' });
+						Expect(tmpResult).to.be.an.instanceOf(Promise);
+
+						tmpModal.dismissDropdowns();
+						tmpResult.then((pValue) =>
+						{
+							Expect(pValue).to.equal(null);
+							document.body.removeChild(tmpAnchor);
+							fDone();
+						});
 					}
 				);
 			}
