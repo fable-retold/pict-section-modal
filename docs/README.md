@@ -76,7 +76,7 @@ if (tmpConfirmed)
 
 ## Ecosystem
 
-Pict-Section-Modal is part of the [Retold](https://github.com/stevenvelozo/retold) module suite:
+Pict-Section-Modal is part of the [Retold](https://github.com/fable-retold/retold) module suite:
 
 - [pict](https://fable-retold.github.io/pict/) -- Core MVC application framework
 - [pict-view](https://fable-retold.github.io/pict-view/) -- View base class
