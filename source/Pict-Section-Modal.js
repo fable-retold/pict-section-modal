@@ -164,13 +164,16 @@ class PictSectionModal extends libPictViewClass
 
 	/**
 	 * Open an anchor-positioned dropdown menu (no backdrop, click-outside
-	 * dismisses). Useful for nav menus and split-button addenda.
+	 * dismisses). Useful for nav menus and split-button addenda. Pass
+	 * `ContentHTML` instead of `items` to render a free-form anchored popover
+	 * (rich card, pre-rendered template menu) with the same dismiss/flip behavior.
 	 *
 	 * @param {HTMLElement|string|object} pAnchor - Element, CSS selector, or
 	 *   { left, top, width, height } rect for context-menu style anchoring.
-	 * @param {object} pOptions - { items, align, position, minWidth, maxHeight,
-	 *   className, closeOnSelect, onSelect, onClose }
-	 * @returns {Promise<{Hash, Item}|null>} Selection or null on dismiss.
+	 * @param {object} pOptions - { items | ContentHTML, align, position, minWidth,
+	 *   maxWidth, maxHeight, className, closeOnSelect, onSelect, onClose }
+	 * @returns {Promise<{Hash, Item}|null>} Selection or null on dismiss
+	 *   (always resolves null in ContentHTML mode).
 	 */
 	dropdown(pAnchor, pOptions)
 	{

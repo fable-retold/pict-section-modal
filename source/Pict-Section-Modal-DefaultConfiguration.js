@@ -555,6 +555,16 @@ module.exports = (
 	            transform var(--pict-modal-transition-duration) ease;
 }
 
+/* Free-form content popovers keep the dropdown chrome (bg / border / shadow /
+   flip / dismiss) but hand sizing + inner padding to the injected content, so a
+   pre-rendered template menu or a wide rich card isn't boxed by the menu
+   defaults. Cap width per-call via the maxWidth option. */
+.pict-modal-dropdown.pict-modal-dropdown--content
+{
+	max-width: none;
+	padding: 0;
+}
+
 .pict-modal-dropdown.pict-modal-dropdown--above { transform: translateY(4px); }
 
 .pict-modal-dropdown.pict-modal-visible
