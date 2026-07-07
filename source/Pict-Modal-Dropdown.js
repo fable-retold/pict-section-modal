@@ -236,6 +236,19 @@ class PictModalDropdown
 		return null;
 	}
 
+	/**
+	 * True when the value is usable as ContentHTML — a primitive string or a
+	 * boxed String object (some template engines hand back `new String(...)`,
+	 * which is `typeof 'object'` and would otherwise slip past the guard).
+	 *
+	 * @param {*} pValue
+	 * @returns {boolean}
+	 */
+	_isContentHTML(pValue)
+	{
+		return (typeof pValue === 'string') || (pValue instanceof String);
+	}
+
 	_buildMenu(pItems, pOptions)
 	{
 		let tmpId = this._modal._nextId();
@@ -243,7 +256,7 @@ class PictModalDropdown
 		tmpMenu.className = 'pict-modal-dropdown';
 		// Free-form content popovers carry a modifier so the host can reset the
 		// menu-item chrome (padding / max-width) and style the body itself.
-		if (typeof pOptions.ContentHTML === 'string') { tmpMenu.className += ' pict-modal-dropdown--content'; }
+		if (this._isContentHTML(pOptions.ContentHTML)) { tmpMenu.className += ' pict-modal-dropdown--content'; }
 		if (pOptions.className) { tmpMenu.className += ' ' + pOptions.className; }
 		tmpMenu.id = 'pict-modal-dropdown-' + tmpId;
 		tmpMenu.style.maxHeight = pOptions.maxHeight;
@@ -254,7 +267,7 @@ class PictModalDropdown
 		// info card, or a pre-rendered template menu) — not a role=menu list, so
 		// we skip the menu role and the per-item keyboard semantics. Outside-click
 		// / Escape / auto-flip / reposition all still apply from dropdown().
-		if (typeof pOptions.ContentHTML === 'string')
+		if (this._isContentHTML(pOptions.ContentHTML))
 		{
 			tmpMenu.innerHTML = pOptions.ContentHTML;
 			return tmpMenu;

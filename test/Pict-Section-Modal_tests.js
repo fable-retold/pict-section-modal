@@ -1300,6 +1300,31 @@ suite
 				);
 				test
 				(
+					'dropdown() accepts a boxed String object as ContentHTML',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						let tmpAnchor = document.createElement('button');
+						document.body.appendChild(tmpAnchor);
+
+						// Some template engines return `new String(...)`, which is
+						// typeof 'object' — it must still render as content, not a menu.
+						tmpModal.dropdown(tmpAnchor, { ContentHTML: new String('<div class="card-body">Boxed</div>') });
+
+						let tmpMenu = document.querySelector('.pict-modal-dropdown');
+						Expect(tmpMenu.classList.contains('pict-modal-dropdown--content')).to.equal(true);
+						Expect(tmpMenu.getAttribute('role')).to.equal(null);
+						Expect(tmpMenu.innerHTML).to.contain('Boxed');
+
+						tmpModal.dismissDropdowns();
+						document.body.removeChild(tmpAnchor);
+						fDone();
+					}
+				);
+				test
+				(
 					'dropdown() with ContentHTML is a free-form popover (content modifier, no menu role)',
 					(fDone) =>
 					{
