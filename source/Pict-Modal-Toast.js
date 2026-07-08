@@ -15,7 +15,8 @@ class PictModalToast
 	 * Show a toast notification.
 	 *
 	 * @param {string} pMessage - Toast message text
-	 * @param {object} [pOptions] - Options (type, duration, position, dismissible)
+	 * @param {object} [pOptions] - Options (type, duration, position, dismissible, allowHTML)
+	 * @param {boolean} [pOptions.allowHTML=false] - When true, render pMessage as raw HTML instead of escaping it. Only pass trusted markup.
 	 * @returns {{ dismiss: function }} Handle with dismiss method
 	 */
 	toast(pMessage, pOptions)
@@ -28,7 +29,9 @@ class PictModalToast
 		tmpToast.className = 'pict-modal-toast pict-modal-toast--' + tmpOptions.type;
 		tmpToast.id = 'pict-modal-toast-' + tmpId;
 
-		let tmpContent = '<span class="pict-modal-toast-message">' + this._escapeHTML(pMessage) + '</span>';
+		// Escape by default; render raw markup only when the caller opts in with allowHTML (trusted content).
+		let tmpMessageMarkup = (tmpOptions.allowHTML === true) ? pMessage : this._escapeHTML(pMessage);
+		let tmpContent = '<span class="pict-modal-toast-message">' + tmpMessageMarkup + '</span>';
 
 		if (tmpOptions.dismissible)
 		{
