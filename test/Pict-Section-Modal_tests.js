@@ -600,6 +600,42 @@ suite
 						fDone();
 					}
 				);
+				test
+				(
+					'toast() escapes HTML in the message by default',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						tmpModal.toast('<strong>Bold</strong>', { duration: 0 });
+
+						let tmpMessageEl = tmpModal._activeToasts[0].element.querySelector('.pict-modal-toast-message');
+						Expect(tmpMessageEl.innerHTML).to.contain('&lt;strong&gt;');
+						Expect(tmpMessageEl.querySelector('strong')).to.equal(null);
+
+						tmpModal.dismissToasts();
+						fDone();
+					}
+				);
+				test
+				(
+					'toast() renders raw HTML when allowHTML is true',
+					(fDone) =>
+					{
+						let tmpPict = new libPict({ LogStreams: [{ loggertype: 'console', streamtype: 'console', level: 'error' }] });
+						let tmpModal = tmpPict.addView('TestModal', {}, libPictSectionModal);
+
+						tmpModal.toast('<strong>Bold</strong>', { duration: 0, allowHTML: true });
+
+						let tmpMessageEl = tmpModal._activeToasts[0].element.querySelector('.pict-modal-toast-message');
+						Expect(tmpMessageEl.querySelector('strong')).to.not.be.null;
+						Expect(tmpMessageEl.querySelector('strong').textContent).to.equal('Bold');
+
+						tmpModal.dismissToasts();
+						fDone();
+					}
+				);
 			}
 		);
 

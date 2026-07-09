@@ -52,7 +52,8 @@ module.exports = (
 		"type": "info",
 		"duration": 3000,
 		"position": "top-right",
-		"dismissible": true
+		"dismissible": true,
+		"allowHTML": false
 	},
 
 	"DefaultPanelOptions":

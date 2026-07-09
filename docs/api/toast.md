@@ -23,6 +23,7 @@ modal.toast(pMessage, pOptions)
 | duration | number | `3000` | Auto-dismiss delay in milliseconds. Set to `0` for a persistent toast that must be dismissed manually. |
 | position | string | `"top-right"` | Viewport position: `"top-right"`, `"top-left"`, `"bottom-right"`, `"bottom-left"`, `"top-center"`, or `"bottom-center"` |
 | dismissible | boolean | `true` | When `true`, shows a close button on the toast |
+| allowHTML | boolean | `false` | When `true`, the message is rendered as raw HTML instead of being escaped. Only pass trusted markup — never unsanitized user input. |
 
 ## Returns
 
@@ -139,7 +140,7 @@ setTimeout(() =>
 
 ## Notes
 
-- The message text is HTML-escaped before rendering. To display rich HTML in a notification, use `modal.show()` instead.
+- The message text is HTML-escaped before rendering by default. To display trusted rich markup inline, pass `allowHTML: true` (never with unsanitized user input); for larger rich content, use `modal.show()` instead.
 - Toast containers are created lazily per position and removed automatically when their last toast is dismissed.
 - The toast enter/exit animation slides in from the right with a 200ms transition.
 - Calling `dismiss()` multiple times on the same handle is safe -- subsequent calls are ignored.
